@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>文件转换</title>
+  <meta charset="utf-8">
+  <style>
+    img {
+      max-width: 200px;
+      max-height: 200px;
+    }
+
+    #show-base64 {
+      width: 100%;
+      max-height: 300px;
+      overflow-x: hidden;
+      /* 自动换行 */
+      word-break: break-all;  
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div>
+    <ul>
+      <li>Blob: 前端的一个专门用于支持文件操作的二进制对象</li>
+      <li>ArrayBuffer：前端的一个通用的二进制缓冲区，类似数组，但在API和特性上却有诸多不同</li>
+      <li>Buffer：Node.js提供的一个二进制缓冲区，常用来处理I/O操作</li>
+      <li>目前，Data URI scheme支持的类型有：
+        data:,文本数据
+        data:text/plain,文本数据
+        data:text/html,HTML代码
+        data:text/html;base64,base64编码的HTML代码
+        data:text/css,CSS代码
+        data:text/css;base64,base64编码的CSS代码
+        data:text/javascript,Javascript代码
+        data:text/javascript;base64,base64编码的Javascript代码
+        data:image/gif;base64,base64编码的gif图片数据
+        data:image/png;base64,base64编码的png图片数据
+        data:image/jpeg;base64,base64编码的jpeg图片数据
+        data:image/x-icon;base64,base64编码的icon图片数据</li>
+    </ul>
+    <div>
+      <h2>图片转ArrayBuff</h2>
+      <input type="file" onchange="getArrayBuffBytes(this)">
+    </div>
+    <div>
+      <h2>图片转base64</h2>
+      <input type="file" onchange="getBase64(this)">
+      <div id="show-base64"></div>
+    </div>
+    <div>
+      <h2>图片转ArrayBuff转base64进行展示</h2>
+      <input type="file" id="upload-base64" onchange="getImgShowBase64(this)">
+      <div>
+        <div id="upload-base64-01"></div>
+        <div id="show-img-div"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+    // 图片转ArrayBuff
+    function getArrayBuffBytes(img, callBack) {
+      let oFileReader = new FileReader();
+      oFileReader.readAsArrayBuffer(img.files[0])
+      let base64 = '';
+      oFileReader.onloadend = function (e) {
+        if (callBack && Object.prototype.toString.call(callBack) === "[object Function]") {
+          callBack(e.target.result)
+        }
+        console.log("ArrayBuff", e.target.result)
+      };
+    }
+
+    // 图片转base64
+    function getBase64(img, callBack) {
+      let oFileReader = new FileReader();
+      oFileReader.readAsDataURL(img.files[0])
+      let base64 = '';
+      oFileReader.onloadend = function (e) {
+        if (callBack && Object.prototype.toString.call(callBack) === "[object Function]") {
+          callBack(e.target.result)
+        }
+        document.getElementById("show-base64").innerText = e.target.result
+        console.log("base64", e.target.result)
+      };
+    }
+
+    // ArrayBuff 转 base64进行展示
+    function getImgShowBase64(imgObj, callback) {
+      const type = imgObj.files[0].type
+      getArrayBuffBytes(imgObj, (res) => {
+        const bytes = new Uint8Array(res)
+        let binaryStr = ''
+        for (let i = 0; i < bytes.length; i++) {
+          binaryStr += String.fromCharCode(bytes[i])
+        }
+        const base64 = `data:${type}'};base64,${window.btoa(binaryStr)}`
+        const imgCre = document.createElement('img')
+        imgCre.src = base64
+        document.getElementById("show-img-div").appendChild(imgCre);
+      })
+    }
+
+    // drawImage报错，原因未知
+    function canvasImage(img) {
+      var canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      var ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+      var dataURL = canvas.toDataURL("image/" + ext);
+      return dataURL;
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!-- 三角形 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>各类三角形</title>
+  <meta charset="utf-8">
+  <style>
+    .main-content {
+      display: flex;
+      align-items: center;
+      background-color: rgb(241, 219, 189, 0.5);
+    }
+    .main-content div {
+      width: 0;
+      height: 0;
+      margin: 0 5px;
+    }
+
+    .border-demo {
+      width: 30px;
+      height: 30px;
+      border-top: 50px solid rgb(86, 129, 51);
+      border-right: 50px solid rgb(236, 199, 77);
+      border-left: 50px solid rgb(104, 185, 231);
+      border-bottom: 50px solid rgb(228, 52, 228);
+    }
+
+    /* 向上 */
+    .triangle-up01 {
+      border: 50px solid transparent;
+      border-bottom-color: rgb(175, 101, 245);
+    }
+
+    .triangle-up02 {
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid rgb(133, 186, 235);
+    }
+
+    .triangle-up03 {
+      border-right: 100px solid transparent;
+      border-bottom: 100px solid rgb(78, 247, 106);
+
+      /* 同效 */
+      /* border-top: 100px solid transparent;
+      border-left: 100px solid rgb(133, 186, 235); */
+    }
+
+    .triangle-up04 {
+      border-left: 100px solid transparent;
+      border-bottom: 100px solid rgb(78, 247, 106);
+
+      /* 同效 */
+      /* border-top: 100px solid transparent;
+      border-right: 100px solid rgb(133, 186, 235); */
+    }
+
+    /* 向下 */
+    .triangle-down01 {
+      border: 50px solid transparent;
+      border-top-color: rgb(175, 101, 245);
+    }
+    .triangle-down02 {
+      border-top: 100px solid rgb(133, 186, 235);
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+    }
+    .triangle-down03 {
+      border-top: 100px solid rgb(78, 247, 106);
+      border-right: 100px solid transparent;
+    }
+    .triangle-down04 {
+      border-top: 100px solid rgb(78, 247, 106);
+      border-left: 100px solid transparent;
+    }
+
+    /* 向左 */
+    .triangle-left01 {
+      border: 50px solid transparent;
+      border-right-color: rgb(175, 101, 245);
+    }
+    .triangle-left02 {
+      border-top: 50px solid transparent;
+      border-right: 100px solid rgb(133, 186, 235);
+      border-bottom: 50px solid transparent;
+    }
+    .triangle-left03 {
+      border-top: 50px solid transparent;
+      border-right: 50px solid rgb(133, 186, 235);
+      border-left: 50px solid transparent;
+    }
+    .triangle-left04 {
+      border-bottom: 50px solid transparent;
+      border-right: 50px solid rgb(133, 186, 235);
+      border-left: 50px solid transparent;
+    }
+
+    /* 向右 */
+    .triangle-right01 {
+      border: 50px solid transparent;
+      border-left-color: rgb(175, 101, 245);
+    }
+    .triangle-right02 {
+      border-top: 50px solid transparent;
+      border-left: 100px solid rgb(133, 186, 235);
+      border-bottom: 50px solid transparent;
+    }
+    .triangle-right03 {
+      border-top: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-left: 50px solid rgb(133, 186, 235);
+    }
+    .triangle-right04 {
+      border-bottom: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-left: 50px solid rgb(133, 186, 235);
+    }
+  </style>
+
+</head>
+
+<body>
+  <ol>
+    <li>transparent: 全透明色彩</li>
+  </ol>
+  <h3>边框</h3>
+  <div class="border-demo"></div>
+  <h3>向上的三角形</h3>
+  <div class="main-content">
+    <div class="triangle-up01"></div>
+    <div class="triangle-up02"></div>
+    <div class="triangle-up03"></div>
+    <div class="triangle-up04"></div>
+  </div>
+
+  <h3>向下的三角形</h3>
+  <div class="main-content">
+    <div class="triangle-down01"></div>
+    <div class="triangle-down02"></div>
+    <div class="triangle-down03"></div>
+    <div class="triangle-down04"></div>
+  </div>
+
+  <h3>向左的三角形</h3>
+  <div class="main-content">
+    <div class="triangle-left01"></div>
+    <div class="triangle-left02"></div>
+    <div class="triangle-left03"></div>
+    <div class="triangle-left04"></div>
+  </div>
+
+  <h3>向右的三角形</h3>
+  <div class="main-content">
+    <div class="triangle-right01"></div>
+    <div class="triangle-right02"></div>
+    <div class="triangle-right03"></div>
+    <div class="triangle-right04"></div>
+  </div>
+</body>
+
+</html>
