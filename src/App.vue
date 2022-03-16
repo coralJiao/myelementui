@@ -1,20 +1,27 @@
 <template>
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
-    <TipTapCommom/>
-    <HelloWorld/>
+    editor:{{ editor }}
+    <TipTapCommom v-model="editor" />
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
 import TipTapCommom from './components/TipTapCommom'
 export default {
   name: 'App',
   components: {
-    HelloWorld,
     TipTapCommom
-  }
+  },
+  data () {
+    return {
+      editor: '123456'
+    }
+  },
+methods: {
+}
+
 }
 </script>
 
