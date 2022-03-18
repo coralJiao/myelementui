@@ -134,12 +134,21 @@ export default {
 
       this.editor.config.videoCallBack = function () {
         console.log('videoCallBack.11111')
+        _this.editor.cmd.do('insertHTML',
+          `
+            <video src="/static/media/abc.54f95da.mp4" autoplay="autoplay" controls="controls"></video>
+          `
+        )
       }
 
       this.editor.create()
     },
     htmlChange (html) {
       this.$emit('input', html)
+      console.log('this.editor', this.editor)
+    },
+    abcd () {
+      console.log('2222222')
     }
   }
 }

@@ -1,5 +1,6 @@
 import E from 'wangeditor'
-const { BtnMenu } = E
+import bindEvent from './index'
+const { BtnMenu, Tooltip } = E
 
 export class clearEditor extends BtnMenu {
   constructor (editor) {
@@ -31,6 +32,8 @@ export class videoEditor extends BtnMenu {
   constructor (editor) {
     const $elem = E.$(`<div class="w-e-menu my-defined-icon" data-title="视频"><i class="el-icon-video-camera-solid"></i></div>`)
     super($elem, editor)
+
+    bindEvent(editor)
   }
   // 菜单点击事件
   clickHandler () {
@@ -40,6 +43,7 @@ export class videoEditor extends BtnMenu {
     if (callBack && Object.prototype.toString.call(callBack) === '[object Function]') {
       callBack()
     }
+    console.log('log...', this)
   }
   // 菜单是否被激活（如果不需要，这个函数可以空着）
   // 1. 激活是什么？光标放在一段加粗、下划线的文本时，菜单栏里的 B 和 U 被激活，如下图
@@ -54,5 +58,12 @@ export class videoEditor extends BtnMenu {
     // // 1. 菜单 DOM 节点会删掉 .w-e-active
     // // 2. this.this.isActive === false
     // this.unActive()
+  }
+}
+
+export class myTool extends Tooltip {
+  constructor (editor) {
+    console.log('....', editor)
+    super()
   }
 }
