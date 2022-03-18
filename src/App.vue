@@ -3,6 +3,12 @@
     <!-- <img src="./assets/logo.png"> -->
     editor:{{ editor }}
     <TipTapCommom v-model="editor" />
+<!-- <el-divider></el-divider>
+    <TipTapCommom v-model="editor1" />
+<el-divider></el-divider>
+    <TipTapCommom v-model="editor2" />
+<el-divider></el-divider>
+    <TipTapCommom v-model="editor3" /> -->
 
   </div>
 </template>
@@ -16,12 +22,13 @@ export default {
   },
   data () {
     return {
-      editor: '123456'
+      editor: '123456',
+      editor1: '123456',
+      editor2: '123456',
+      editor3: '123456'
     }
   },
-methods: {
-}
-
+  methods: {}
 }
 </script>
 

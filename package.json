@@ -11,6 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.15.6",
+    "path": "^0.12.7",
     "vue": "^2.5.2",
     "wangeditor": "^4.7.12"
   },
