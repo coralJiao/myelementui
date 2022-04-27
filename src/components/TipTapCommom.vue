@@ -1,9 +1,9 @@
-<template lang='html'>
+<template lang="html">
   <div>
     <!-- <div class='editor' id='editor'>
     </div> -->
-    <div ref='toolbar' class='toolbar'></div>
-    <div ref='editor' class='text'></div>
+    <div ref="toolbar" class="toolbar"/>
+    <div ref="editor" class="text"/>
   </div>
 </template>
 
@@ -12,13 +12,6 @@ import { clearEditor, videoEditor } from '@/utils/editorSetting'
 import E from 'wangeditor'
 export default {
   name: 'TipTapCommom',
-  data () {
-    return {
-      // uploadPath,
-      editor: null,
-      info_: null
-    }
-  },
   // model: {
   //   prop: 'value',
   //   event: 'change'
@@ -33,27 +26,34 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      // uploadPath,
+      editor: null,
+      info_: null
+    }
+  },
   watch: {
-    isClear (val) {
+    isClear(val) {
       // 触发清除文本域内容
       if (val) {
         this.editor.txt.clear()
         this.info_ = null
       }
     },
-    value: function (value) {
+    value: function(value) {
       if (value !== this.editor.txt.html()) {
         this.editor.txt.html(this.value)
       }
     }
     // value为编辑框输入的内容，这里我监听了一下值，当父组件调用得时候，如果给value赋值了，子组件将会显示父组件赋给的值
   },
-  mounted () {
+  mounted() {
     this.seteditor()
     this.editor.txt.html(this.value)
   },
   methods: {
-    seteditor () {
+    seteditor() {
       // 使用refs  创建多个时不会错乱
       this.editor = new E(this.$refs.toolbar, this.$refs.editor)
 
@@ -92,7 +92,7 @@ export default {
       //   'list', // 列表
       //   'todo',
       //   'justify', // 对齐方式
-      //   'quote', // 引用
+      //   'quote', // 引用  -- blockquote
       //   'emoticon', // 表情
       //   'image', // 插入图片
       //   'video', // 插入视频
@@ -119,7 +119,7 @@ export default {
       // ]
 
       const _this = this
-      this.editor.config.onchange = function (html) {
+      this.editor.config.onchange = function(html) {
         // html 即变化之后的内容
         _this.htmlChange(html)
       }
@@ -132,7 +132,7 @@ export default {
       //   console.log('插入视频内容', video)
       // }
 
-      this.editor.config.videoCallBack = function () {
+      this.editor.config.videoCallBack = function() {
         console.log('videoCallBack.11111')
         _this.editor.cmd.do('insertHTML',
           `
@@ -143,11 +143,11 @@ export default {
 
       this.editor.create()
     },
-    htmlChange (html) {
+    htmlChange(html) {
       this.$emit('input', html)
       console.log('this.editor', this.editor)
     },
-    abcd () {
+    abcd() {
       console.log('2222222')
     }
   }

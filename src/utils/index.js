@@ -13,7 +13,7 @@ export class abc extends Tooltip {
 /**
  * 生成 Tooltip 的显示隐藏函数
  */
-export function createShowHideFn (editor) {
+export function createShowHideFn(editor) {
   let tooltip = new Tooltip()
   const t = (text, prefix = '') => {
     return editor.i18next.t(prefix + text)
@@ -22,54 +22,53 @@ export function createShowHideFn (editor) {
    * 显示 tooltip
    * @param $node 链接元素
    */
-  function showVideoTooltip ($node) {
-    const conf = [
-      {
-        $elem: $("<span class='w-e-icon-trash-o'></span>"),
-        onClick: (editor, $node) => {
-          // 选中video元素 删除
-          $node.remove()
-          // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
-          return true
-        }
-      },
-      {
-        $elem: $('<span>100%</span>'),
-        onClick: (editor, $node) => {
-          $node.attr('width', '100%')
-          $node.removeAttr('height')
-          // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
-          return true
-        }
-      },
-      {
-        $elem: $('<span>50%</span>'),
-        onClick: (editor, $node) => {
-          $node.attr('width', '50%')
-          $node.removeAttr('height')
-          // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
-          return true
-        }
-      },
-      {
-        $elem: $('<span>30%</span>'),
-        onClick: (editor, $node) => {
-          $node.attr('width', '30%')
-          $node.removeAttr('height')
-          // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
-          return true
-        }
-      },
-      {
-        $elem: $(`<span>${t('重置')}</span>`),
-        onClick: (editor, $node) => {
-          $node.removeAttr('width')
-          $node.removeAttr('height')
-
-          // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
-          return true
-        }
+  function showVideoTooltip($node) {
+    const conf = [{
+      $elem: $("<span class='w-e-icon-trash-o'></span>"),
+      onClick: (editor, $node) => {
+        // 选中video元素 删除
+        $node.remove()
+        // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
+        return true
       }
+    },
+    {
+      $elem: $('<span>100%</span>'),
+      onClick: (editor, $node) => {
+        $node.attr('width', '100%')
+        $node.removeAttr('height')
+        // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
+        return true
+      }
+    },
+    {
+      $elem: $('<span>50%</span>'),
+      onClick: (editor, $node) => {
+        $node.attr('width', '50%')
+        $node.removeAttr('height')
+        // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
+        return true
+      }
+    },
+    {
+      $elem: $('<span>30%</span>'),
+      onClick: (editor, $node) => {
+        $node.attr('width', '30%')
+        $node.removeAttr('height')
+        // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
+        return true
+      }
+    },
+    {
+      $elem: $(`<span>${t('重置')}</span>`),
+      onClick: (editor, $node) => {
+        $node.removeAttr('width')
+        $node.removeAttr('height')
+
+        // 返回 true，表示执行完之后，隐藏 tooltip。否则不隐藏。
+        return true
+      }
+    }
     ]
 
     tooltip = new Tooltip(editor, $node, conf)
@@ -79,7 +78,7 @@ export function createShowHideFn (editor) {
   /**
    * 隐藏 tooltip
    */
-  function hideVideoTooltip () {
+  function hideVideoTooltip() {
     // 移除 tooltip
     if (tooltip) {
       tooltip.remove()
@@ -97,8 +96,11 @@ export function createShowHideFn (editor) {
  * 绑定 tooltip 事件
  * @param editor 编辑器实例
  */
-export default function bindTooltipEvent (editor) {
-  const { showVideoTooltip, hideVideoTooltip } = createShowHideFn(editor)
+export default function bindTooltipEvent(editor) {
+  const {
+    showVideoTooltip,
+    hideVideoTooltip
+  } = createShowHideFn(editor)
 
   // 点击视频元素是，显示 tooltip
   editor.txt.eventHooks.videoClickEvents.push(showVideoTooltip)
@@ -117,7 +119,7 @@ export default function bindTooltipEvent (editor) {
  * 绑定事件
  * @param editor 编辑器实例
  */
-export function bindEvent (editor) {
+export function bindEvent(editor) {
   this.bindTooltipVideo(editor)
   // bindEventKeyboardEvent(editor)
 }
